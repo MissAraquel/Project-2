@@ -18,6 +18,18 @@ if (config.use_env_variable) {
     config
   );
 }
+client.sync().then(function () {
+  // Table created
+  return client.create({
+    email : "jean.dupont@gmail.com",
+    password: "adc12345cxd",
+    first_name: 'Jean',
+    last_name: 'Dupont',
+    location: "New York",
+    preference_time: 1
+  });
+});
+
 
 fs.readdirSync(__dirname)
   .filter(function(file) {
@@ -35,6 +47,7 @@ Object.keys(db).forEach(function(modelName) {
     db[modelName].associate(db);
   }
 });
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
