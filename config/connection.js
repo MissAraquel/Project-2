@@ -1,17 +1,13 @@
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "password",
-    database: "userProfile_db"
-  });
-  
-  connection.connect(function(err) {
-    if (err) {
-      console.error("error connecting: " + err.stack);
-      return;
-    }
-    console.log("connected as id " + connection.threadId);
-  });
-  
-  module.exports = connection;
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
+  operatorsAliases: false,
+
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+});
