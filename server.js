@@ -2,35 +2,59 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
+var env = require('dotenv').load();
+
+
+var PORT = process.env.PORT || 3000;
 
 var db = require("./models");
 
+// Setup for Passport:
 var app = express();
-var PORT = process.env.PORT || 3000;
+//   app.get("/", function(req, res) {
+  
+//     res.send("Welcome to Passport with Sequelize");
 
-// Passport for passwords:
-var passport = require('passport'), 
-  LocalStrategy = require('passport-local').Strategy;
+//   });
+//   app.listen(3000, function(err) {
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-      if (!user.validPassword(password)) {
-        return done(null, false, { message: 'Incorrect password.' });
-      }
-      return done(null, user);
-    });
-  }
-));
+//     if (!err)
+//         console.log("Site is live");
+//     else console.log(err);
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+//   });
+//   var passport = require("passport");
+//   LocalStrategy = require("passport-local").Strategy;
+//   passport.use(new LocalStrategy(
+//     function(username, password, done) {
+//       User.findOne({ username: username }, function(err, user) {
+//         if (err) { return done(err); }
+//         if (!user) {
+//           return done(null, false, { message: "Incorrect username." });
+//         }
+//         if (!user.validPassword(password)) {
+//           return done(null, false, { message: "Incorrect password." });
+//         }
+//         return done(null, user);
+//       });
+//     }
+// ));
+
+//Models
+var models = require(".//models");
+
+// Middleware 
+// For BodyParser:
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
+
+// For Passport:
+// app.use(session({ secret: "keyboard cat",resave: true, saveUninitialized:true})); // session secret
+// app.use(passport.initialize());
+// app.use(passport.session()); // persistent login sessions
+
 
 // Handlebars
 app.engine(
@@ -63,5 +87,15 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
+//Sync Database
+// models.sequelize.sync().then(function() {
+ 
+//   console.log("Nice! Database looks fine");
 
-module.exports = app;
+// }).catch(function(err) {
+
+//   console.log(err, "Something went wrong with the Database Update!");
+
+// });
+
+// module.exports = app;

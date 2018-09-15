@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS userProfile_db;
-CREATE DATABASE userProfile_db;
+DROP DATABASE IF EXISTS weWannaHelp_db;
+CREATE DATABASE weWannaHelp_db;
 
-DROP DATABASE IF EXISTS history_db;
-CREATE DATABASE history_db;
