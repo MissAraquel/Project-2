@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-
+    
     password: 
     {
       type: DataTypes.STRING,
@@ -27,20 +27,21 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     preference_time: DataTypes.STRING.BINARY, 
-    preference_money: DataTypes.STRING.BINARY
+    preference_money: DataTypes.STRING.BINARY,
+    hist_id: DataTypes.INTEGER
   });
+
+  User.associate = function(models){
+    User.belongsToMany(History, {
+      through: {
+        model: models.History,
+      }
+    },
+    {
+      foreignKey: "user_id",
+    });
+  };
+  
   return User;
 }; 
 
-module.exports = function(sequelize, DataTypes) {
-  var History = sequelize.define("History", {
-    user_id: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      },
-    category: DataTypes.STRING,
-    org_name: DataTypes.STRING,
-    org_link: DataTypes.STRING,
-  });
-  return History;
-};
