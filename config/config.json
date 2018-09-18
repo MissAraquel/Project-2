@@ -10,10 +10,13 @@
     "username": "root",
     "password": "password",
     "database": "weWannaHelp_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306,
+    "logging": false
   },
   "production": {
+    "use_env_variable": "JAWSDB_URL",
     "username": "root",
     "password": "password",
     "database": "weWannaHelp_db",

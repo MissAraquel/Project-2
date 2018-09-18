@@ -1,7 +1,7 @@
 {{! NAVBAR }}
 <nav class="navbar navbar-dark bg-info">
     <a class="navbar-brand" href="#">
-      <img src="public/images/helphands.png" width="100" height="100" alt="help">
+      <img src="images/helphands.png" width="100" height="100" alt="help"> i Wanna Help
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,31 +17,162 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="modal" data-target="#signUp" href="#">Create Account</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Help
-            </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Find a place to donate</a>
-                <a class="dropdown-item" href="#">Find a place to volunteer your time</a>
-              </div>
-          </li>
         </ul>
     </div>
 </nav>
 {{! CAROUSEL }}
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" src="public/images/volunteer2.jpg" alt="First slide">
+        <img class="d-block w-100" src="images/volunteer1.jpg" alt="First slide">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="public/images/donate1.jpeg" alt="Second slide">
+        <img class="d-block w-100" src="images/volunteer1.jpg" alt="Second slide">
       </div>
       <div class="carousel-item">
-        <img class="d-block w-100" src="public/images/volunteer2.jpeg" alt="Third slide">
+        <img class="d-block w-100" src="images/volunteer1.jpg" alt="Third slide">
       </div>
     </div>
+</div>
+<br>
+<div class="search container">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <h3 style="text-align:center">find where to donate money:</h3>
+                <div class="form-row">
+                    <div class="col-5">
+                        <input type="text" class="form-control" placeholder="Type of Charity">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="City">
+                    </div>
+                    <div class="col">
+                        <select id="inputState" class="form-control">
+                          <option selected>State</option>
+                          <option value="AL">AL</option>
+                          <option value="AK">AK</option>
+                          <option value="AZ">AZ</option>
+                          <option value="AR">AR</option>
+                          <option value="CA">CA</option>
+                          <option value="CO">CO</option>
+                          <option value="CT">CT</option>
+                          <option value="DE">DE</option>
+                          <option value="FL">FL</option>
+                          <option value="GA">GA</option>
+                          <option value="HI">HI</option>
+                          <option value="ID">ID</option>                          
+                          <option value="IL">IL</option>
+                          <option value="IN">IN</option>
+                          <option value="IA">IA</option>                          
+                          <option value="KS">KS</option>
+                          <option value="KY">KY</option>
+                          <option value="LA">LA</option>
+                          <option value="ME">ME</option>
+                          <option value="MD">MD</option>
+                          <option value="MA">MA</option>
+                          <option value="MI">MI</option>
+                          <option value="MN">MN</option>
+                          <option value="MS">MS</option>
+                          <option value="MO">MO</option>
+                          <option value="MT">MT</option>
+                          <option value="NE">NE</option>
+                          <option value="NV">NV</option>
+                          <option value="NH">NH</option>
+                          <option value="NJ">NJ</option>                          
+                          <option value="NM">NM</option>
+                          <option value="NY">NY</option>
+                          <option value="NC">NC</option>                          
+                          <option value="ND">ND</option>
+                          <option value="OH">OH</option>
+                          <option value="OK">OK</option>
+                          <option value="OR">OR</option>
+                          <option value="PA">PA</option>
+                          <option value="RI">RI</option>
+                          <option value="SC">SC</option>
+                          <option value="SD">SD</option>
+                          <option value="TN">TN</option>
+                          <option value="TX">TX</option>
+                          <option value="UT">UT</option>
+                          <option value="VT">VT</option>
+                          <option value="VA">VA</option>
+                          <option value="WA">WA</option>
+                          <option value="WV">WV</option>                          
+                          <option value="WI">WI</option>
+                          <option value="WY">WY</option>                     
+                        </select>
+                    </div>
+                    <button id="charity-btn" type="button" class="btn btn-outline-info">submit</button>
+                  </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form>
+              <h3 style="text-align:center">find where to donate time:</h3>
+              <div class="form-row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="City">
+                </div>
+                <div class="col">
+                    <select id="inputState" class="form-control">
+                      <option selected>State...</option>
+                      <option value="AL">AL</option>
+                      <option value="AK">AK</option>
+                      <option value="AZ">AZ</option>
+                      <option value="AR">AR</option>
+                      <option value="CA">CA</option>
+                      <option value="CO">CO</option>
+                      <option value="CT">CT</option>
+                      <option value="DE">DE</option>
+                      <option value="FL">FL</option>
+                      <option value="GA">GA</option>
+                      <option value="HI">HI</option>
+                      <option value="ID">ID</option>                          
+                      <option value="IL">IL</option>
+                      <option value="IN">IN</option>
+                      <option value="IA">IA</option>                          
+                      <option value="KS">KS</option>
+                      <option value="KY">KY</option>
+                      <option value="LA">LA</option>
+                      <option value="ME">ME</option>
+                      <option value="MD">MD</option>
+                      <option value="MA">MA</option>
+                      <option value="MI">MI</option>
+                      <option value="MN">MN</option>
+                      <option value="MS">MS</option>
+                      <option value="MO">MO</option>
+                      <option value="MT">MT</option>
+                      <option value="NE">NE</option>
+                      <option value="NV">NV</option>
+                      <option value="NH">NH</option>
+                      <option value="NJ">NJ</option>                          
+                      <option value="NM">NM</option>
+                      <option value="NY">NY</option>
+                      <option value="NC">NC</option>                          
+                      <option value="ND">ND</option>
+                      <option value="OH">OH</option>
+                      <option value="OK">OK</option>
+                      <option value="OR">OR</option>
+                      <option value="PA">PA</option>
+                      <option value="RI">RI</option>
+                      <option value="SC">SC</option>
+                      <option value="SD">SD</option>
+                      <option value="TN">TN</option>
+                      <option value="TX">TX</option>
+                      <option value="UT">UT</option>
+                      <option value="VT">VT</option>
+                      <option value="VA">VA</option>
+                      <option value="WA">WA</option>
+                      <option value="WV">WV</option>                          
+                      <option value="WI">WI</option>
+                      <option value="WY">WY</option>     
+                    </select>
+                </div>
+                <button id="volunteer-btn" type="button" class="btn btn-outline-info">submit</button>
+              </div>
+        </form>
+        </div>
+  </div>
 </div>
 <br>
 {{! CARDS }}
@@ -49,41 +180,41 @@
   <div class="row">
     <div class="col">
       <div class="card" style="width: 13rem;">
-        <img class="card-img-top" src="https://dummyimage.com/150x150/8a868a/fff.jpg&text=" alt="Card image cap">
+        <img class="card-img-top" src="images/RedCross.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">American Red Cross</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Donate!</a>
+              <p class="card-text">The American Red Cross, also known as The American National Red Cross, is a humanitarian organization that provides emergency assistance, disaster relief, and disaster preparedness education in the United States.</p>
+              <a href="https://www.redcross.org/donate/donation.html/" class="btn btn-outline-info">Let Me Help!</a>
           </div>
       </div>
     </div>
     <div class="col">
       <div class="card" style="width: 13rem;">
-        <img class="card-img-top" src="https://dummyimage.com/150x150/8a868a/fff.jpg&text=" alt="Card image cap">
+        <img class="card-img-top" src="images/ASPCA.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">L.A Homeless Shelter</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Volunteer!</a>
+            <h5 class="card-title">ASPCA</h5>
+              <p class="card-text">The American Society for the Prevention of Cruelty to Animals is a non-profit organization dedicated to preventing cruelty to animals. Based in New York City since its inception in 1866, the organization's mission is "to provide effective means for the prevention of cruelty to animals throughout the United States.</p>
+              <a href="https://secure.aspca.org/donate/donate?ms=wb_top_donate&initialms=wb_top_donate&pcode=WEBMEMBER&lpcode=WEBGUARD" class="btn btn-outline-info">Let Me Help!</a>
           </div>
       </div>
     </div>
     <div class="col">
       <div class="card" style="width: 13rem;">
-        <img class="card-img-top" src="https://dummyimage.com/150x150/8a868a/fff.jpg&text=" alt="Card image cap">
+        <img class="card-img-top" src="images/Trevor.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Operation USA</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Donate!</a>
+            <h5 class="card-title">The Trevor Project</h5>
+              <p class="card-text">The Trevor Project is an American non-profit organization founded in 1998 focused on suicide prevention efforts among lesbian, gay, bisexual, transgender, and questioning youth. Through a toll-free telephone number, it operates The Trevor Lifeline, a confidential service that offers trained counselors.</p>
+              <a href="https://give.thetrevorproject.org/give/63307/#!/donation/checkout" class="btn btn-outline-info">Let Me Help!</a>
           </div>
       </div>
     </div>
     <div class="col">
       <div class="card" style="width: 13rem;">
-        <img class="card-img-top" src="https://dummyimage.com/150x150/8a868a/fff.jpg&text=" alt="Card image cap">
+        <img class="card-img-top" src="images/bbbs.jpg" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Big Brother Big Sisters of America</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Volunteer!</a>
+              <p class="card-text">Big Brothers Big Sisters of America is a 501 non-profit organization whose goal is to help all children reach their potential through professionally supported, one-to-one relationships with volunteer mentors. Big Brothers Big Sisters is one of the oldest and largest youth mentoring organizations in the United States.</p>
+              <a href="https://secured.bbbs.org/ea-action/action?ea.campaign.id=57589&ea.client.id=2000&_ga=2.14883761.629975834.1537060960-1032957540.1537060960" class="btn btn-outline-info">Let Me Help!</a>
           </div>
       </div>
     </div>
