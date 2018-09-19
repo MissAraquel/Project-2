@@ -41,9 +41,9 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+/// Routes
+app.use(require("./routes/authRoutes"));
+app.use(require("./routes/htmlRoutes"));
 // require("./routes/apiRoutes")(app);
 app.use(function(req, res, next) {
   res.render("404");
