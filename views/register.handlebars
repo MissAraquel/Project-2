@@ -1,0 +1,7 @@
+<h1>Sign Up</h1>
+{{#if error}}error>> {{error}} {{/if}}
+<form role="form" action="/register" method="post">
+    <input type='text' name="email" placeholder='Enter email' />
+    <input type='password' name="password" placeholder='Password' />
+    <button type='submit' name="submit">Sign up</button>
+</form>
