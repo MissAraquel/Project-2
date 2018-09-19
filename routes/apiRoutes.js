@@ -1,4 +1,5 @@
 var db = require("../models");
+var request = require("request");
 
 module.exports = function (app) {
   // Get all examples
@@ -34,6 +35,24 @@ module.exports = function (app) {
     "WHERE Histories.user_id = Users.id;").then(function (weWannaHelp_db) {
       res.json(weWannaHelp_db);
       console.log(weWannaHelp_db);
+    });
+  });
+
+  console.log('hello from route file');
+  app.get('/api/orghunter', function(req, res) {
+    console.log('hi');
+    var userKey = process.env.ORGHUNTER_USER_KEY;
+    var charityCity = req.query.charityCity;
+    var charityType = req.query.charityType;
+    var charityState = req.query.charityState;
+    var reqUrl = 'http://data.orghunter.com/v1/charitysearch?user_key=' +
+                  userKey + '&searchTerm=' + charityType + '&city=' +
+                  charityCity + '&state=' + charityState;
+
+    console.log(reqUrl);
+    request(reqUrl, function(err, data) {
+      console.log(data);
+      res.json({hi: 'hello'});
     });
   });
 };
