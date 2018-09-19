@@ -1,27 +1,52 @@
-var db = require("../models");
+var express = require("express");
+var router = express.Router();
+var request = require("request");
 
-module.exports = function(app) {
-  // Load index page
-  // app.get("/", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.render("index", {
-  //       msg: "Welcome!",
-  //       examples: dbExamples
-  //     });
-  //   });
-  // });
+//Index/Home
+router.get('/', function(req, res) {
+  res.render('index');
+});
+//Results
+router.get('/results', function (req, res) {
+    var userKey = process.env.ORGHUNTER_USER_KEY;
+    var resultType = req.query.resultType;
 
-  // // Load example page and pass in an example by id
-  // app.get("/example/:id", function(req, res) {
-  //   db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.render("example", {
-  //       example: dbExample
-  //     });
-  //   });
-  // });
+    if (resultType === 'orghunter') {
+      handleOrghunterRequest(req, res);
+    } else if (resultType === 'eventbrite') {
+      handleEventbriteRequest(req, res);
+    }
+});
 
-  // // Render 404 page for any unmatched routes
-  // app.get("*", function(req, res) {
-  //   res.render("404");
-  // });
-};
+function handleOrghunterRequest(req, res) {
+  var userKey = process.env.ORGHUNTER_USER_KEY;
+  var charityCity = req.query.charityCity;
+  var charityType = req.query.charityType;
+  var charityState = req.query.charityState;
+  var reqUrl = 'http://data.orghunter.com/v1/charitysearch?user_key=' +
+                userKey + '&searchTerm=' + charityType + '&city=' +
+                charityCity + '&state=' + charityState;
+
+  console.log(reqUrl);
+  // res.render('results');
+
+  console.log(reqUrl);
+  request(reqUrl, function(err, data) {
+    var toParse = data.body || '';
+
+    try {
+      var parsedBody = JSON.parse(toParse);
+    }catch(error) {}
+
+    // console.log(JSON.stringify(data.body, null, 2));;
+    console.log(parsedBody);
+    res.render('results', {orgs: parsedBody.data})
+  });
+}
+
+function handleEventbriteRequest(req, res) {
+  
+}
+
+//export routes for server.js 
+module.exports = router;

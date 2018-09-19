@@ -6,6 +6,7 @@ var session = require("express-session");
 var env = require('dotenv').load();
 
 
+
 var PORT = process.env.PORT || 3000;
 
 var db = require("./models");
@@ -50,10 +51,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
+
 // For Passport:
 // app.use(session({ secret: "keyboard cat",resave: true, saveUninitialized:true})); // session secret
 // app.use(passport.initialize());
 // app.use(passport.session()); // persistent login sessions
+
+var Orghunter = require('./config/keys.js');
+//var userkey = new Orghunter('keys.Orghunter');
 
 
 // Handlebars
@@ -65,28 +70,36 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+//Import routes and give server access to them
+var routes = require("./routes/htmlRoutes.js");
+app.use(routes);
+require('./routes/apiRoutes.js')(app);
 
-var syncOptions = { force: false };
+app.listen(PORT, function() {
+  console.log("Server listening on: http://localhost:" + PORT)
+});
+
+// Routes
+// require("./routes/apiRoutes")(app);
+
+// var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
+// if (process.env.NODE_ENV === "test") {
+//   syncOptions.force = true;
+// }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
+// db.sequelize.sync(syncOptions).then(function() {
+//   app.listen(PORT, function() {
+//     console.log(
+//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//       PORT,
+//       PORT
+//     );
+//   });
+// });
 //Sync Database
 // models.sequelize.sync().then(function() {
  
