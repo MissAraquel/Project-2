@@ -31,6 +31,9 @@ app.use(passport.session());
 // Serve Static Files Middleware
 app.use(express.static("public"));
 
+var Orghunter = require('./config/keys.js');
+//var userkey = new Orghunter('keys.Orghunter');
+
 
 // Handlebars
 app.engine(
@@ -54,24 +57,28 @@ passport.use(new LocalStrategy(db.User.authenticate));
 passport.serializeUser(db.User.serializeUser);
 passport.deserializeUser(db.User.deserializeUser);
 
-var syncOptions = { force: false };
+app.listen(PORT, function() {
+  console.log("Server listening on: http://localhost:" + PORT)
+});
+
+// var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
+// if (process.env.NODE_ENV === "test") {
+//   syncOptions.force = true;
+// }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
+// db.sequelize.sync(syncOptions).then(function() {
+//   app.listen(PORT, function() {
+//     console.log(
+//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//       PORT,
+//       PORT
+//     );
+//   });
+// });
 //Sync Database
 // models.sequelize.sync().then(function() {
  

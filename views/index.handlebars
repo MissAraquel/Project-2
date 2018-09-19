@@ -1,7 +1,7 @@
 {{! NAVBAR }}
 <nav class="navbar navbar-dark bg-info">
-    <a class="navbar-brand" href="#">
-      <img src="images/helphands.png" width="100" height="100" alt="help"> i Wanna Help
+    <a class="navbar-brand" href="/">
+      <img src="images/helphands.png" width="100" height="100" alt="help"> We Wanna Help
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,16 +39,16 @@
     <div class="row">
         <div class="col-md-6">
             <form>
-                <h3 style="text-align:center">find where to donate money:</h3>
+                <h2 style="text-align:center">Donate Money:</h2>
                 <div class="form-row">
-                    <div class="col-5">
-                        <input type="text" class="form-control" placeholder="Type of Charity">
+                    <div class="col">
+                        <input id="charityType" type="text" class="form-control1" placeholder="Type of Charity">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="City">
+                        <input id="charityCity" type="text" class="form-control1" placeholder="City">
                     </div>
-                    <div class="col">
-                        <select id="inputState" class="form-control">
+                    <div class="col-2">
+                        <select id="charityState" class="form-control1">
                           <option selected>State</option>
                           <option value="AL">AL</option>
                           <option value="AK">AK</option>
@@ -102,19 +102,19 @@
                           <option value="WY">WY</option>                     
                         </select>
                     </div>
-                    <button id="charity-btn" type="button" class="btn btn-outline-info">submit</button>
+                    <button id="money" type="button" class="btn btn-outline-light">submit</button>
                   </div>
             </form>
         </div>
         <div class="col-md-6">
             <form>
-              <h3 style="text-align:center">find where to donate time:</h3>
+              <h2 style="text-align:center">Donate Time:</h2>
               <div class="form-row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" class="form-control2" placeholder="City">
                 </div>
-                <div class="col">
-                    <select id="inputState" class="form-control">
+                <div class="col-2">
+                    <select id="inputState" class="form-control2">
                       <option selected>State...</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
@@ -168,7 +168,7 @@
                       <option value="WY">WY</option>     
                     </select>
                 </div>
-                <button id="volunteer-btn" type="button" class="btn btn-outline-info">submit</button>
+                <button id="volunteer-btn" type="button" class="btn btn-outline-light">submit</button>
               </div>
         </form>
         </div>
@@ -278,7 +278,3 @@
       </div>
     </div>
   </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
