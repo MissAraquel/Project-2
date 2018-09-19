@@ -1,0 +1,7 @@
+<h1>Log In</h1>
+{{#if error}}error>> {{error}} {{/if}}
+<form role="form" action="/login" method="post">
+    <input type='text' name="email" placeholder='Enter email' />
+    <input type='password' name="password" placeholder='Password' />
+    <button type='submit' name="submit">Login</button>
+</form>
