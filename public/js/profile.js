@@ -26,7 +26,7 @@ $(".submit").on("click", function (event) {
 
 function createUser() {
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-    $.ajax({ url: "/api/tables", method: "GET" })
+    $.ajax({ url: "/api/user", method: "GET" })
       .then(function(tableData) {
 
         // Here we then log the tableData to console, where it will show up as an object.
@@ -40,18 +40,18 @@ function createUser() {
           var tableList = $("#tableList");
 
           // Then display the fields in the HTML (Section Name, Date, URL)
-          var listItem = $("<li class='list-group-item mt-4'>");
+          var listUser = $("<li class='list-group-item mt-4'>");
 
           listItem.append(
             $("<h2>").text("Table #" + (i + 1)),
             $("<hr>"),
-            $("<h2>").text("ID: " + tableData[i].customerID),
-            $("<h2>").text("Name: " + tableData[i].customerName),
-            $("<h2>").text("Email: " + tableData[i].customerEmail),
-            $("<h2>").text("Phone: " + tableData[i].phoneNumber)
+            $("<h2>").text("ID: " + tableData[i].firstName),
+            $("<h2>").text("Name: " + tableData[i].lastName),
+            $("<h2>").text("Email: " + tableData[i].email),
+            $("<h2>").text("Phone: " + tableData[i].password)
           );
 
-          tableList.append(listItem);
+          tableList.append(listUser);
         }
       });
   }
