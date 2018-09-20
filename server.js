@@ -61,33 +61,33 @@ app.listen(PORT, function() {
   console.log("Server listening on: http://localhost:" + PORT)
 });
 
-// var syncOptions = { force: false };
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-// if (process.env.NODE_ENV === "test") {
-//   syncOptions.force = true;
-// }
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
 
 // Starting the server, syncing our models ------------------------------------/
-// db.sequelize.sync(syncOptions).then(function() {
-//   app.listen(PORT, function() {
-//     console.log(
-//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-//       PORT,
-//       PORT
-//     );
-//   });
-// });
-//Sync Database
-// models.sequelize.sync().then(function() {
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
+    console.log(
+      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+      PORT,
+      PORT
+    );
+  });
+});
+// Sync Database
+models.sequelize.sync().then(function() {
  
-//   console.log("Nice! Database looks fine");
+  console.log("Nice! Database looks fine");
 
-// }).catch(function(err) {
+}).catch(function(err) {
 
-//   console.log(err, "Something went wrong with the Database Update!");
+  console.log(err, "Something went wrong with the Database Update!");
 
-// });
+});
 
 module.exports = app;
