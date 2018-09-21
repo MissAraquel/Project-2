@@ -36,7 +36,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach(function(file) {
-    console.log(file);
+  
     var model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
@@ -44,7 +44,6 @@ fs.readdirSync(__dirname)
   // Generic association
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
-    console.log(db);
     db[modelName].associate(db);
   }
 });
