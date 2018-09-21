@@ -52,11 +52,55 @@
   margin-left: 7px
 }
 
+.navbar-brand {
+  font-family: 'Trocchi', serif !important;
+  font-size: 150%;
+}
+
 h2 {
   font-family: 'Trocchi', serif;
   color: white;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
 }
 
 body {
   background-color: #00a6bb;
+}
+
+#charity {
+    display: inline-block;
+    width:512px;
+    border: 1px solid white;
+}
+
+#volunteer {
+    display: inline-block;
+    width:512px;
+    border: 1px solid white;
+}
+
+.orgsearch {
+  display: inline-block;
+  width:512px;
+  border: 1px solid white;
+}
+
+.ebsearch {
+  float: right;
+  display: inline-block;
+  width:512px;
+  border: 1px solid white;
+}
+
+.results-container {
+  display: inline-block;
+  border: 1px solid white;
 }

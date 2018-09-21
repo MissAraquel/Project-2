@@ -45,12 +45,73 @@ $(document).ready(function() {
         }
     });
 
-    console.log("hi there");
-    var orgData = sessionStorage.getItem('orgData'); 
-    if (orgData) {
-       orgData = JSON.parse(orgData); // to get it back to a JSON object
-    }   
-    console.log(orgData.data[0].charityName);
+    $(".form-register").submit(function() {
+        var newProfile = $(this).serializeArray();
+        console.log(newProfile);
+
+        alert("Thanks for signing up " + newProfile[0].value + " " + newProfile[1].value);
+
+        //Clears form after submit
+        $("#register-first").val("");
+        $("#register-last").val("");
+        $("#register-email").val("");
+        $("#register-pw").val("");
+
+        $.post("/api/user", newProfile,
+            function (data) {
+                
+            //Clears form after submit
+            $("#register-first").val("");
+            $("#register-last").val("");
+            $("#register-email").val("");
+            $("#register-pw").val("");
+    
+        });
+
+
+    });
+
+      $(".form-signin").submit(function() {
+          var signIn = $(this).serializeArray();
+          console.log(signIn);
+
+          alert("You are logged in!");
+
+          $("#login-email").val("");
+          $("#login-pw").val("");
+      })
+
+
+    // $("#register").on("click", function (event) {
+    //     event.preventDefault();
+    //     console.log("register btn");
+
+    //     var firstName = $("#register-first").serializeArray();
+    //     var lastName = $("#register-last").val();
+    //     var email =  $("#register-email").val();
+    //     var password =  $("#register-pw").val();
+
+    //     // Here we grab the form elements
+    //     // var newProfile = {
+    //     //     firstName, 
+    //     //     lastName,
+    //     //     email,
+    //     //     password
+    //     // };
+    
+    //     console.log(newProfile);
+    
+    //     // $.post("/api/user", newProfile,
+    //     //     function (data) {
+    //     //         alert("Thank you for signing up, " + firstName + lastName + " !");
+    
+    //     //         // Clear the form when submitting
+    //     //         $("#register-first").val("");
+    //     //         $("#register-last").val("");
+    //     //         $("#register-email").val("");
+    //     //         $("#register-pw").val("");
+    //     // });
+    // });
 
 
 });

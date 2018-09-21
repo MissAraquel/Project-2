@@ -1,36 +1,31 @@
-
-<nav class="navbar navbar-dark bg-info">
-    <a class="navbar-brand" href="/">
-      <img src="images/helphands.png" width="100" height="100" alt="help"> We Wanna Help
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button> 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#signIn" href="#">Sign-In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="modal" data-target="#signUp" href="#">Create Account</a>
-          </li>
-        </ul>
-    </div>
-</nav>
-<br>
+{{#if orgs}}
 <center>
       <div class="list-group">
         {{#each orgs}}
-           <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+           <section class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{charityName}}</h5>
-            <small class="text-muted">3 days ago</small>
+            <h3>{{charityName}}</h3>
           </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
+            <p>Mission Statement:{{missionStatement}}</p>
+            <p>Donation URL:<a href="{{donationUrl}}">{{donationUrl}}</a></p>
+            <p>EIN:{{ein}}</p>
+        </section>
         {{/each}}
 </center>
+{{/if}}
+
+{{#if events}}
+<center>
+      <div class="list-group">
+        {{#each events}}
+           <section class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{name.text}}</h5>
+            <small class="text-muted">{{start.local}}</small>
+          </div>
+            <p class="mb-1">{{description.text}}</p>
+            <a href="{{url}}">{{url}}</a>
+           </section>
+        {{/each}}
+</center>
+{{/if}}
