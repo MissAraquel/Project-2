@@ -45,6 +45,7 @@ $(document).ready(function() {
         }
     });
 
+
     $(".form-register").submit(function() {
         var newProfile = $(this).serializeArray();
         console.log(newProfile);
@@ -82,36 +83,34 @@ $(document).ready(function() {
       })
 
 
-    // $("#register").on("click", function (event) {
-    //     event.preventDefault();
-    //     console.log("register btn");
-
-    //     var firstName = $("#register-first").serializeArray();
-    //     var lastName = $("#register-last").val();
-    //     var email =  $("#register-email").val();
-    //     var password =  $("#register-pw").val();
-
-    //     // Here we grab the form elements
-    //     // var newProfile = {
-    //     //     firstName, 
-    //     //     lastName,
-    //     //     email,
-    //     //     password
-    //     // };
-    
-    //     console.log(newProfile);
-    
-    //     // $.post("/api/user", newProfile,
-    //     //     function (data) {
-    //     //         alert("Thank you for signing up, " + firstName + lastName + " !");
-    
-    //     //         // Clear the form when submitting
-    //     //         $("#register-first").val("");
-    //     //         $("#register-last").val("");
-    //     //         $("#register-email").val("");
-    //     //         $("#register-pw").val("");
-    //     // });
-    // });
-
 
 });
+
+
+    //Event search 
+    $("#volunteer-btn").on("click", function() {
+        //Validates that all fields in search have values
+        function validationForm() {
+            var isValid = true;
+            $('.form-control2').each(function() {
+                if ($(this).val() === '')
+                    isValid = false;
+                 
+            });
+            return isValid;
+        }
+         if(validationForm() === true) {
+            
+            var location = $("#location").val();
+
+            window.location = '/results?resultType=eventbrite&location='+location;
+
+           
+        } else {
+            alert('All fields are required to complete your search');
+        }
+        console.log('eventbrite')
+    });
+
+
+    
