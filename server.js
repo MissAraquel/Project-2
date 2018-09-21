@@ -10,10 +10,9 @@ var env = require('dotenv').load();
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+//Models
 var db = require("./models");
 
-//Models
-var models = require("./models");
 
 // Middleware 
 // For BodyParser:
@@ -57,10 +56,6 @@ passport.use(new LocalStrategy(db.User.authenticate));
 passport.serializeUser(db.User.serializeUser);
 passport.deserializeUser(db.User.deserializeUser);
 
-app.listen(PORT, function() {
-  console.log("Server listening on: http://localhost:" + PORT)
-});
-
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
@@ -80,14 +75,5 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 // Sync Database
-models.sequelize.sync().then(function() {
- 
-  console.log("Nice! Database looks fine");
-
-}).catch(function(err) {
-
-  console.log(err, "Something went wrong with the Database Update!");
-
-});
 
 module.exports = app;
