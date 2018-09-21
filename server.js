@@ -5,6 +5,7 @@ var exphbs = require("express-handlebars");
 var passport = require("passport");
 var LocalStrategy = require('passport-local').Strategy;
 var session = require("express-session");
+var moment = require('moment');
 var env = require('dotenv').load();
 
 var app = express();

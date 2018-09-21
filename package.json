@@ -21,6 +21,7 @@
     "express-session": "^1.15.6",
     "heroku": "^7.16.0",
     "local": "^0.3.3",
+    "moment": "^2.22.2",
     "mysql": "^2.16.0",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",
