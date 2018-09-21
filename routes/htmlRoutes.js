@@ -9,6 +9,10 @@ var request = require("request");
 router.get('/', function(req, res) {
   res.render('index');
 });
+//Profile
+router.get('/profile', function(req, res) {
+  res.render('profile');
+});
 //Results
 router.get('/results', function (req, res) {
     var userKey = process.env.ORGHUNTER_USER_KEY;
@@ -49,7 +53,27 @@ function handleOrghunterRequest(req, res) {
 }
 
 function handleEventbriteRequest(req, res) {
-  
+  var token = process.env.EVENTBRITE_TOKEN;
+  var location = req.query.location;
+  var reqUrl2 = 'https://www.eventbriteapi.com/v3/events/search/?token=' +
+    token + '&q=volunteer&location.address=' + location;
+
+
+  console.log(reqUrl2);
+  request(reqUrl2, function(err, data) {
+    var toParse = data.body || '';
+    try {
+      var parsedBody = JSON.parse(toParse);
+    }catch(error) {}
+
+
+
+    // console.log(JSON.stringify(data.body, null, 2));;
+    console.log(parsedBody)
+    console.log(typeof parsedBody);
+    debugger;
+    res.render('results', parsedBody)
+  });
 }
 
 // Examples of guarded routes
