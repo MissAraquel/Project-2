@@ -45,12 +45,32 @@ $(document).ready(function() {
         }
     });
 
-    console.log("hi there");
-    var orgData = sessionStorage.getItem('orgData'); 
-    if (orgData) {
-       orgData = JSON.parse(orgData); // to get it back to a JSON object
-    }   
-    console.log(orgData.data[0].charityName);
 
 
 });
+
+
+    //Event search 
+    $("#volunteer-btn").on("click", function() {
+        //Validates that all fields in search have values
+        function validationForm() {
+            var isValid = true;
+            $('.form-control2').each(function() {
+                if ($(this).val() === '')
+                    isValid = false;
+                 
+            });
+            return isValid;
+        }
+         if(validationForm() === true) {
+            
+            var location = $("#location").val();
+
+            window.location = '/results?resultType=eventbrite&location='+location;
+
+           
+        } else {
+            alert('All fields are required to complete your search');
+        }
+        console.log('eventbrite')
+    });
