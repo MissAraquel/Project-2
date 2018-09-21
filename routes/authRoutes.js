@@ -4,7 +4,11 @@ var router = express.Router();
 var passport = require('passport');
 var User = require('../models').User;
 
-
+var authController = require('../routes/authcontroller.js');
+    module.exports = function(app) {
+    app.get('/signup', authController.signup);
+};
+router.get('/signin', authController.signin);
 
 router.get('/', (req, res) => {
     res.render('index', { user : req.user });

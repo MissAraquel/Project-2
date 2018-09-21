@@ -37,7 +37,7 @@ function createUser() {
         for (var i = 0; i < tableData.length; i++) {
 
           // Get a reference to the tableList element and populate it with tables
-          var tableList = $("#tableList");
+          var UserList = $("#UserList");
 
           // Then display the fields in the HTML (Section Name, Date, URL)
           var listUser = $("<li class='list-group-item mt-4'>");
@@ -51,7 +51,7 @@ function createUser() {
             $("<h2>").text("Phone: " + tableData[i].password)
           );
 
-          tableList.append(listUser);
+          UserList.append(listUser);
         }
       });
   }
