@@ -52,6 +52,8 @@ function handleOrghunterRequest(req, res) {
   });
 }
 
+
+
 function handleEventbriteRequest(req, res) {
   var token = process.env.EVENTBRITE_TOKEN;
   var location = req.query.location;
@@ -75,6 +77,7 @@ function handleEventbriteRequest(req, res) {
     res.render('results', parsedBody)
   });
 }
+
 
 // Examples of guarded routes
 // router.get("/guarded", 

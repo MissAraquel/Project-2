@@ -55,4 +55,22 @@ module.exports = function (app) {
       res.json({hi: 'hello'});
     });
   });
+
+
+  console.log('hello from route file');
+  app.get('/api/eventbrite', function(req, res) {
+    console.log('hi2');
+    var token = process.env.EVENTBRITE_TOKEN;
+    var location = req.query.location.address;
+    var reqUrl2 = 'https://www.eventbriteapi.com/v3/events/search/?token=' +
+                  token + '&q=volunteer&location.address=' + location;
+
+    console.log(reqUrl2);
+    request(reqUrl2, function(err, data) {
+      console.log(data);
+      res.json({hi: 'hello'});
+    });
+  });
+
+
 };
