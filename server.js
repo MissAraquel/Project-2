@@ -9,13 +9,12 @@ var moment = require('moment');
 var env = require('dotenv').load();
 
 var app = express();
-
-
-
 var PORT = process.env.PORT || 3000;
 
-//Models
 var db = require("./models");
+
+//Models
+var models = require("./models");
 
 // Middleware 
 // For BodyParser:
@@ -24,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Setup Sessions Middleware (Passport)
+// Setup Sessions Middleware
 app.use(require('express-session')({
   secret: 'keyboard cat', resave: true, saveUninitialized: true
 }));
@@ -49,37 +48,47 @@ app.set("view engine", "handlebars");
 /// Routes
 app.use(require("./routes/authRoutes"));
 app.use(require("./routes/htmlRoutes"));
-app.use(require("./routes/authRoutes"));
-// var authRoute = require('./routes/authRoutes.js')(app);
 // require("./routes/apiRoutes")(app);
 app.use(function(req, res, next) {
   res.render("404");
 });
-
 
 // set strategies and serializations
 passport.use(new LocalStrategy(db.User.authenticate));
 passport.serializeUser(db.User.serializeUser);
 passport.deserializeUser(db.User.deserializeUser);
 
-var syncOptions = { force: false };
+app.listen(PORT, function() {
+  console.log("Server listening on: http://localhost:" + PORT)
+});
+
+// var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
+// if (process.env.NODE_ENV === "test") {
+//   syncOptions.force = true;
+// }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
-// Sync Database
+// db.sequelize.sync(syncOptions).then(function() {
+//   app.listen(PORT, function() {
+//     console.log(
+//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//       PORT,
+//       PORT
+//     );
+//   });
+// });
+//Sync Database
+// models.sequelize.sync().then(function() {
+ 
+//   console.log("Nice! Database looks fine");
+
+// }).catch(function(err) {
+
+//   console.log(err, "Something went wrong with the Database Update!");
+
+// });
 
 module.exports = app;
