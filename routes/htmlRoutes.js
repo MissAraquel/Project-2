@@ -9,6 +9,10 @@ var request = require("request");
 router.get('/', function(req, res) {
   res.render('index');
 });
+//Profile
+router.get('/profile', function(req, res) {
+  res.render('profile');
+});
 //Results
 router.get('/results', function (req, res) {
     var userKey = process.env.ORGHUNTER_USER_KEY;
@@ -76,33 +80,33 @@ function handleEventbriteRequest(req, res) {
 
 
 // Examples of guarded routes
-router.get("/guarded", 
-  ensureLoggedIn('/login'),
-  function(req, res) {
-    db.User.findOne({ where: { id: req.params.id } })
-    .then(function(dbExample) {
-      res.render("example", {
-        example: dbExample,
-        routeNumber: 1,
-        user: req.user
-      });
-    });
-  }
-); 
-router.get("/guarded2", 
-  ensureLoggedIn('/login'),
-  function(req, res) {
-    db.User.findOne({ where: { id: req.params.id } })
-    .then(function(dbExample) {
-      console.log(req.user);
-      res.render("example", {
-        example: dbExample,
-        routeNumber: 2,
-        user: req.user
-      });
-    });
-  }
-); 
+// router.get("/guarded", 
+//   ensureLoggedIn('/login'),
+//   function(req, res) {
+//     db.User.findOne({ where: { id: req.params.id } })
+//     .then(function(dbExample) {
+//       res.render("example", {
+//         example: dbExample,
+//         routeNumber: 1,
+//         user: req.user
+//       });
+//     });
+//   }
+// ); 
+// router.get("/guarded2", 
+//   ensureLoggedIn('/login'),
+//   function(req, res) {
+//     db.User.findOne({ where: { id: req.params.id } })
+//     .then(function(dbExample) {
+//       console.log(req.user);
+//       res.render("example", {
+//         example: dbExample,
+//         routeNumber: 2,
+//         user: req.user
+//       });
+//     });
+//   }
+// ); 
 
 //export routes for server.js 
 module.exports = router;

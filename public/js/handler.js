@@ -46,6 +46,43 @@ $(document).ready(function() {
     });
 
 
+    $(".form-register").submit(function() {
+        var newProfile = $(this).serializeArray();
+        console.log(newProfile);
+
+        alert("Thanks for signing up " + newProfile[0].value + " " + newProfile[1].value);
+
+        //Clears form after submit
+        $("#register-first").val("");
+        $("#register-last").val("");
+        $("#register-email").val("");
+        $("#register-pw").val("");
+
+        $.post("/api/user", newProfile,
+            function (data) {
+                
+            //Clears form after submit
+            $("#register-first").val("");
+            $("#register-last").val("");
+            $("#register-email").val("");
+            $("#register-pw").val("");
+    
+        });
+
+
+    });
+
+      $(".form-signin").submit(function() {
+          var signIn = $(this).serializeArray();
+          console.log(signIn);
+
+          alert("You are logged in!");
+
+          $("#login-email").val("");
+          $("#login-pw").val("");
+      })
+
+
 
 });
 

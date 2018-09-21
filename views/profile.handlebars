@@ -1,0 +1,52 @@
+<h2>Welcome {{username}}</h2>
+<h3>My History:</h3>
+<div class="container" id="charity">
+  <div class="row">
+    <div class="col-6">
+      <h4>Charities</h4>
+    </div>
+  </div>
+  <div class="row">
+        <div class="col-sm-3">
+            <p>Org Name:</p>
+        </div>
+        <div class="col-sm-3">
+            <p>Website:</p>
+        </div>
+        <div class="col-sm-3">
+            <p>Date</p>
+        </div>
+  </div>
+  <center>
+      <div class="list-group">
+        {{#each orgs}}
+           <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{charityName}}</h5>
+            <p class="mb-1">Website:</p><a href="#">{{url}}</a>
+            <small class="text-muted">{{date}}</small>
+          </div>
+            <small class="text-muted">Donec id elit non mi porta.</small>
+        </a>
+        {{/each}}
+ </center>
+</div>
+<div class="container float-right" id="volunteer">
+  <div class="row">
+    <div class="col-6">
+      <h4>Volunteer</h4>
+    </div>
+  </div>
+  <div class="row">
+        <div class="col-sm-3">
+            <p>Org Name:</p>
+        </div>
+        <div class="col-sm-3">
+            <p>Website:</p>
+        </div>
+        <div class="col-sm-3">
+            <p>Date</p>
+        </div>
+  </div>
+</div>
+
