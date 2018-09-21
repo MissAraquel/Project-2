@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 var fs = require("fs");
 var path = require("path");
@@ -10,7 +10,7 @@ var config = require(path.join(__dirname + "/../config/config.json"))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db = {};
 var connection;
-console.log('hi')
+
 // if (process.env.JAWSDB_URL){
 //   connection = mysql.createConnection(process.env.JAWSDB_URL);
 // } else {
@@ -42,11 +42,12 @@ fs.readdirSync(__dirname)
   });
 
   // Generic association
-// Object.keys(db).forEach(modelName => {
-//   if (db[modelName].associate) {
-//     db[modelName].associate(db);
-//   }
-// });
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    console.log(db);
+    db[modelName].associate(db);
+  }
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

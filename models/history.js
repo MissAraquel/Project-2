@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var History = sequelize.define("History", {
         user_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             
         },
@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
     History.associate = function (models) {
         History.belongsToMany(models.User, {
             through: {
-                model: models.User
+                model: models.userHistory
               }
             },
             {

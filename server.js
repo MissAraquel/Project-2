@@ -8,11 +8,13 @@ var session = require("express-session");
 var env = require('dotenv').load();
 
 var app = express();
+
+
+
 var PORT = process.env.PORT || 3000;
 
 //Models
 var db = require("./models");
-
 
 // Middleware 
 // For BodyParser:
@@ -21,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Setup Sessions Middleware
+// Setup Sessions Middleware (Passport)
 app.use(require('express-session')({
   secret: 'keyboard cat', resave: true, saveUninitialized: true
 }));
@@ -46,10 +48,13 @@ app.set("view engine", "handlebars");
 /// Routes
 app.use(require("./routes/authRoutes"));
 app.use(require("./routes/htmlRoutes"));
+app.use(require("./routes/authRoutes"));
+// var authRoute = require('./routes/authRoutes.js')(app);
 // require("./routes/apiRoutes")(app);
 app.use(function(req, res, next) {
   res.render("404");
 });
+
 
 // set strategies and serializations
 passport.use(new LocalStrategy(db.User.authenticate));
