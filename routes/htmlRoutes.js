@@ -75,6 +75,19 @@ function handleEventbriteRequest(req, res) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Examples of guarded routes
 router.get("/guarded", 
   ensureLoggedIn('/login'),
