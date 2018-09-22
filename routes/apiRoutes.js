@@ -10,10 +10,13 @@ module.exports = function (app) {
   });
   // Create a new user
   app.post("/api/user", function (req, res) {
+    console.log("User Data: ");
+    console.log(req.body);
     db.User.create(req.body).then(function (weWannaHelp_db) {
-      res.json(weWannaHelp_db);
+      res.redirect("/");
     });
   });
+
 
   // Delete an example by id
   app.delete("/api/user/:id", function (req, res) {
