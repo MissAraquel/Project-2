@@ -36,9 +36,6 @@ function handleOrghunterRequest(req, res) {
                 charityCity + '&state=' + charityState;
 
   console.log(reqUrl);
-  // res.render('results');
-
-  console.log(reqUrl);
   request(reqUrl, function(err, data) {
     var toParse = data.body || '';
 
@@ -46,9 +43,14 @@ function handleOrghunterRequest(req, res) {
       var parsedBody = JSON.parse(toParse);
     }catch(error) {}
 
-    // console.log(JSON.stringify(data.body, null, 2));;
     console.log(parsedBody);
-    res.render('results', {orgs: parsedBody.data})
+    if(parsedBody.data.length == 0) {
+      console.log("Sorry there are no results for your search");
+      var parsedBody = false;
+      res.render('results', {orgs: parsedBody.data})
+    } else {
+      res.render('results', {orgs: parsedBody.data})
+    }
   });
 }
 
