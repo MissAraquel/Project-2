@@ -4,7 +4,7 @@ var router = express.Router();
 var passport = require('passport');
 var User = require('../models').User;
 
-var authController = require('../routes/authcontroller.js');
+var authController = require('../routes/authController.js');
     module.exports = function(app) {
     app.get('/signup', authController.signup);
 };
@@ -14,11 +14,11 @@ router.get('/', (req, res) => {
     res.render('index', { user : req.user });
 });
 
-router.get('/register', (req, res) => {
+router.get('/api/user', (req, res) => {
     res.render('register', { });
 });
 
-router.post('/register', (req, res, next) => {
+router.post('/api/user', (req, res, next) => {
     console.log('hi from post to register');
     console.log(req.body);
     db.User.create({
