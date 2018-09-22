@@ -1,18 +1,3 @@
-{{#if orgs}}
-<center>
-      <div class="list-group">
-        {{#each orgs}}
-           <section class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h3>{{charityName}}</h3>
-          </div>
-            <p>Mission Statement:{{missionStatement}}</p>
-            <p>Donation URL:<a href="{{donationUrl}}">{{donationUrl}}</a></p>
-            <p>EIN:{{ein}}</p>
-        </section>
-        {{/each}}
-</center>
-{{/if}}
 {{#if events}}
 <center>
       <div class="list-group">
@@ -26,6 +11,32 @@
             <a href="{{url}}">{{url}}</a>
            </section>
         {{/each}}
+</center>
+{{/if}}
+{{#if orgs}}
+<center>
+      <div class="list-group">
+        {{#each orgs}}
+           <section class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h3>{{charityName}}</h3>
+          </div>
+            <p>Mission Statement:{{missionStatement}}</p>
+            <p>Donation URL:<a href="{{donationUrl}}">{{donationUrl}}</a></p>
+            <p>EIN:{{ein}}</p>
+        </section>
+        {{/each}}
+        {{else}}
+<center>
+        <div class="list-group">
+          <section class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h3>Sorry there are no results for your search</h3>
+            </div>
+              <a href="/">Back to home</a>
+            </div>
+          </section>
+        </div>
 </center>
 {{/if}}
 
